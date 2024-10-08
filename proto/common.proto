@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package common;
+
+// Status structure for common responses
+message Status {
+    bool success = 1;
+    string error_msg = 2;  // Error message
+    string error_code = 3; // Error code
+    string error_name = 4; // Error name
+}

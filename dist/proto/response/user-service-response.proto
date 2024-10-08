@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package UserServiceResponse;
+
+// User response message containing user details
+message UserResponse {
+    int64 userId = 1;            // Unique identifier for the user
+    string user_name = 2;        // Username of the user
+    int64 mobile = 3;            // 10-digit mobile number
+    string fcm_token = 4;        // FCM token for notifications
+    string email = 5;            // Email address
+    string user_type = 6;        // Type of user (e.g., 'normal', 'admin', etc.)
+}
+
+// Response message for creating a user
+message CreateUserResponse {
+    common.Status status = 1; 
+    UserResponse user = 2;       // The created user details
+}
+
+// Response message for updating a user
+message UpdateUserResponse {
+    common.Status status = 1; 
+    UserResponse user = 2;       // The updated user details
+}
+
+// Response message for retrieving user details
+message GetUserDetailsResponse {
+    common.Status status = 1; 
+    UserResponse user = 2;       // User details
+}
