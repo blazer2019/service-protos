@@ -5,7 +5,7 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts",  
+  "types": "dist/index.d.ts",
   "main": "",
   "scripts": {
     "build": "rimraf dist && mkdirp dist && chmod +x ./build.sh && ./build.sh && tsc && cp -r ./proto ./dist/proto",
@@ -19,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "@grpc/grpc-js": "^1.9.1",
+    "nice-grpc": "^2.1.10",
     "protobufjs": "^7.2.5"
   },
   "devDependencies": {

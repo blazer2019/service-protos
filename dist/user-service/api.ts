@@ -5,114 +5,79 @@
 // source: user-service/api.proto
 
 /* eslint-disable */
-import {
-  type CallOptions,
-  ChannelCredentials,
-  Client,
-  type ClientOptions,
-  type ClientUnaryCall,
-  type handleUnaryCall,
-  makeGenericClientConstructor,
-  Metadata,
-  type ServiceError,
-  type UntypedServiceImplementation,
-} from "@grpc/grpc-js";
+import { type CallContext, type CallOptions } from "nice-grpc-common";
 import { CreateUserRequest, GetUserDetailsRequest, UpdateUserRequest } from "./request";
 import { CreateUserResponse, GetUserDetailsResponse, UpdateUserResponse } from "./response";
 
 export const protobufPackage = "UserService";
 
 /** User service definition */
-export type UserServiceService = typeof UserServiceService;
-export const UserServiceService = {
-  createUser: {
-    path: "/UserService.UserService/CreateUser",
-    requestStream: false,
-    responseStream: false,
-    requestSerialize: (value: CreateUserRequest) => Buffer.from(CreateUserRequest.encode(value).finish()),
-    requestDeserialize: (value: Buffer) => CreateUserRequest.decode(value),
-    responseSerialize: (value: CreateUserResponse) => Buffer.from(CreateUserResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => CreateUserResponse.decode(value),
-  },
-  getUserDetails: {
-    path: "/UserService.UserService/GetUserDetails",
-    requestStream: false,
-    responseStream: false,
-    requestSerialize: (value: GetUserDetailsRequest) => Buffer.from(GetUserDetailsRequest.encode(value).finish()),
-    requestDeserialize: (value: Buffer) => GetUserDetailsRequest.decode(value),
-    responseSerialize: (value: GetUserDetailsResponse) => Buffer.from(GetUserDetailsResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => GetUserDetailsResponse.decode(value),
-  },
-  updateUser: {
-    path: "/UserService.UserService/UpdateUser",
-    requestStream: false,
-    responseStream: false,
-    requestSerialize: (value: UpdateUserRequest) => Buffer.from(UpdateUserRequest.encode(value).finish()),
-    requestDeserialize: (value: Buffer) => UpdateUserRequest.decode(value),
-    responseSerialize: (value: UpdateUserResponse) => Buffer.from(UpdateUserResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => UpdateUserResponse.decode(value),
+export type UserServiceDefinition = typeof UserServiceDefinition;
+export const UserServiceDefinition = {
+  name: "UserService",
+  fullName: "UserService.UserService",
+  methods: {
+    createUser: {
+      name: "CreateUser",
+      requestType: CreateUserRequest,
+      requestStream: false,
+      responseType: CreateUserResponse,
+      responseStream: false,
+      options: {},
+    },
+    getUserDetails: {
+      name: "GetUserDetails",
+      requestType: GetUserDetailsRequest,
+      requestStream: false,
+      responseType: GetUserDetailsResponse,
+      responseStream: false,
+      options: {},
+    },
+    updateUser: {
+      name: "UpdateUser",
+      requestType: UpdateUserRequest,
+      requestStream: false,
+      responseType: UpdateUserResponse,
+      responseStream: false,
+      options: {},
+    },
   },
 } as const;
 
-export interface UserServiceServer extends UntypedServiceImplementation {
-  createUser: handleUnaryCall<CreateUserRequest, CreateUserResponse>;
-  getUserDetails: handleUnaryCall<GetUserDetailsRequest, GetUserDetailsResponse>;
-  updateUser: handleUnaryCall<UpdateUserRequest, UpdateUserResponse>;
+export interface UserServiceImplementation<CallContextExt = {}> {
+  createUser(
+    request: CreateUserRequest,
+    context: CallContext & CallContextExt,
+  ): Promise<DeepPartial<CreateUserResponse>>;
+  getUserDetails(
+    request: GetUserDetailsRequest,
+    context: CallContext & CallContextExt,
+  ): Promise<DeepPartial<GetUserDetailsResponse>>;
+  updateUser(
+    request: UpdateUserRequest,
+    context: CallContext & CallContextExt,
+  ): Promise<DeepPartial<UpdateUserResponse>>;
 }
 
-export interface UserServiceClient extends Client {
+export interface UserServiceClient<CallOptionsExt = {}> {
   createUser(
-    request: CreateUserRequest,
-    callback: (error: ServiceError | null, response: CreateUserResponse) => void,
-  ): ClientUnaryCall;
-  createUser(
-    request: CreateUserRequest,
-    metadata: Metadata,
-    callback: (error: ServiceError | null, response: CreateUserResponse) => void,
-  ): ClientUnaryCall;
-  createUser(
-    request: CreateUserRequest,
-    metadata: Metadata,
-    options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: CreateUserResponse) => void,
-  ): ClientUnaryCall;
+    request: DeepPartial<CreateUserRequest>,
+    options?: CallOptions & CallOptionsExt,
+  ): Promise<CreateUserResponse>;
   getUserDetails(
-    request: GetUserDetailsRequest,
-    callback: (error: ServiceError | null, response: GetUserDetailsResponse) => void,
-  ): ClientUnaryCall;
-  getUserDetails(
-    request: GetUserDetailsRequest,
-    metadata: Metadata,
-    callback: (error: ServiceError | null, response: GetUserDetailsResponse) => void,
-  ): ClientUnaryCall;
-  getUserDetails(
-    request: GetUserDetailsRequest,
-    metadata: Metadata,
-    options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: GetUserDetailsResponse) => void,
-  ): ClientUnaryCall;
+    request: DeepPartial<GetUserDetailsRequest>,
+    options?: CallOptions & CallOptionsExt,
+  ): Promise<GetUserDetailsResponse>;
   updateUser(
-    request: UpdateUserRequest,
-    callback: (error: ServiceError | null, response: UpdateUserResponse) => void,
-  ): ClientUnaryCall;
-  updateUser(
-    request: UpdateUserRequest,
-    metadata: Metadata,
-    callback: (error: ServiceError | null, response: UpdateUserResponse) => void,
-  ): ClientUnaryCall;
-  updateUser(
-    request: UpdateUserRequest,
-    metadata: Metadata,
-    options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: UpdateUserResponse) => void,
-  ): ClientUnaryCall;
+    request: DeepPartial<UpdateUserRequest>,
+    options?: CallOptions & CallOptionsExt,
+  ): Promise<UpdateUserResponse>;
 }
 
-export const UserServiceClient = makeGenericClientConstructor(
-  UserServiceService,
-  "UserService.UserService",
-) as unknown as {
-  new (address: string, credentials: ChannelCredentials, options?: Partial<ClientOptions>): UserServiceClient;
-  service: typeof UserServiceService;
-  serviceName: string;
-};
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
+  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;

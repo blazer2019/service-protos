@@ -5,39 +5,37 @@
 //   protoc               v5.28.2
 // source: user-service/api.proto
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserServiceClient = exports.UserServiceService = exports.protobufPackage = void 0;
-/* eslint-disable */
-const grpc_js_1 = require("@grpc/grpc-js");
+exports.UserServiceDefinition = exports.protobufPackage = void 0;
 const request_1 = require("./request");
 const response_1 = require("./response");
 exports.protobufPackage = "UserService";
-exports.UserServiceService = {
-    createUser: {
-        path: "/UserService.UserService/CreateUser",
-        requestStream: false,
-        responseStream: false,
-        requestSerialize: (value) => Buffer.from(request_1.CreateUserRequest.encode(value).finish()),
-        requestDeserialize: (value) => request_1.CreateUserRequest.decode(value),
-        responseSerialize: (value) => Buffer.from(response_1.CreateUserResponse.encode(value).finish()),
-        responseDeserialize: (value) => response_1.CreateUserResponse.decode(value),
-    },
-    getUserDetails: {
-        path: "/UserService.UserService/GetUserDetails",
-        requestStream: false,
-        responseStream: false,
-        requestSerialize: (value) => Buffer.from(request_1.GetUserDetailsRequest.encode(value).finish()),
-        requestDeserialize: (value) => request_1.GetUserDetailsRequest.decode(value),
-        responseSerialize: (value) => Buffer.from(response_1.GetUserDetailsResponse.encode(value).finish()),
-        responseDeserialize: (value) => response_1.GetUserDetailsResponse.decode(value),
-    },
-    updateUser: {
-        path: "/UserService.UserService/UpdateUser",
-        requestStream: false,
-        responseStream: false,
-        requestSerialize: (value) => Buffer.from(request_1.UpdateUserRequest.encode(value).finish()),
-        requestDeserialize: (value) => request_1.UpdateUserRequest.decode(value),
-        responseSerialize: (value) => Buffer.from(response_1.UpdateUserResponse.encode(value).finish()),
-        responseDeserialize: (value) => response_1.UpdateUserResponse.decode(value),
+exports.UserServiceDefinition = {
+    name: "UserService",
+    fullName: "UserService.UserService",
+    methods: {
+        createUser: {
+            name: "CreateUser",
+            requestType: request_1.CreateUserRequest,
+            requestStream: false,
+            responseType: response_1.CreateUserResponse,
+            responseStream: false,
+            options: {},
+        },
+        getUserDetails: {
+            name: "GetUserDetails",
+            requestType: request_1.GetUserDetailsRequest,
+            requestStream: false,
+            responseType: response_1.GetUserDetailsResponse,
+            responseStream: false,
+            options: {},
+        },
+        updateUser: {
+            name: "UpdateUser",
+            requestType: request_1.UpdateUserRequest,
+            requestStream: false,
+            responseType: response_1.UpdateUserResponse,
+            responseStream: false,
+            options: {},
+        },
     },
 };
-exports.UserServiceClient = (0, grpc_js_1.makeGenericClientConstructor)(exports.UserServiceService, "UserService.UserService");
