@@ -1,6 +1,6 @@
 import _m0 from "protobufjs/minimal";
 import { Status } from "../common";
-export declare const protobufPackage = "UserServiceResponse";
+export declare const protobufPackage = "UserService";
 /** User response message containing user details */
 export interface UserResponse {
     /** Unique identifier for the user */

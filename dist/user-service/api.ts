@@ -2,7 +2,7 @@
 // versions:
 //   protoc-gen-ts_proto  v1.181.2
 //   protoc               v5.28.2
-// source: api/user-service-api.proto
+// source: user-service/api.proto
 
 /* eslint-disable */
 import {
@@ -17,8 +17,8 @@ import {
   type ServiceError,
   type UntypedServiceImplementation,
 } from "@grpc/grpc-js";
-import { CreateUserRequest, GetUserDetailsRequest, UpdateUserRequest } from "../request/user-service-request";
-import { CreateUserResponse, GetUserDetailsResponse, UpdateUserResponse } from "../response/user-service-response";
+import { CreateUserRequest, GetUserDetailsRequest, UpdateUserRequest } from "./request";
+import { CreateUserResponse, GetUserDetailsResponse, UpdateUserResponse } from "./response";
 
 export const protobufPackage = "UserService";
 

@@ -3,7 +3,7 @@
 // versions:
 //   protoc-gen-ts_proto  v1.181.2
 //   protoc               v5.28.2
-// source: response/user-service-response.proto
+// source: user-service/response.proto
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -13,7 +13,7 @@ exports.GetUserDetailsResponse = exports.UpdateUserResponse = exports.CreateUser
 const long_1 = __importDefault(require("long"));
 const minimal_1 = __importDefault(require("protobufjs/minimal"));
 const common_1 = require("../common");
-exports.protobufPackage = "UserServiceResponse";
+exports.protobufPackage = "UserService";
 function createBaseUserResponse() {
     return { userId: 0, userName: "", mobile: 0, fcmToken: "", email: "", userType: "" };
 }

@@ -1,5 +1,5 @@
 import _m0 from "protobufjs/minimal";
-export declare const protobufPackage = "UserServiceRequest";
+export declare const protobufPackage = "UserService";
 /** User-specific request and response data */
 export interface CreateUserRequest {
     userName: string;

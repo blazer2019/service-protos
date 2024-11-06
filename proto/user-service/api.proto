@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package UserService;
+
+// Import the request and response types
+import "user-service/request.proto";
+import "user-service/response.proto";
+
+
+// User service definition
+service UserService {
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+    rpc GetUserDetails(GetUserDetailsRequest) returns (GetUserDetailsResponse);
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+}

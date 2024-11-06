@@ -3,7 +3,7 @@
 // versions:
 //   protoc-gen-ts_proto  v1.181.2
 //   protoc               v5.28.2
-// source: request/user-service-request.proto
+// source: user-service/request.proto
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -12,7 +12,7 @@ exports.GetUserDetailsRequest = exports.UpdateUserRequest = exports.CreateUserRe
 /* eslint-disable */
 const long_1 = __importDefault(require("long"));
 const minimal_1 = __importDefault(require("protobufjs/minimal"));
-exports.protobufPackage = "UserServiceRequest";
+exports.protobufPackage = "UserService";
 function createBaseCreateUserRequest() {
     return { userName: "", mobile: 0, fcmToken: "", email: "", userType: "" };
 }

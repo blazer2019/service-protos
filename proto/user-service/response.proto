@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "common.proto";
 
-package UserServiceResponse;
+package UserService;
 
 // User response message containing user details
 message UserResponse {

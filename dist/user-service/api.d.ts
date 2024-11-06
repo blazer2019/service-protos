@@ -1,6 +1,6 @@
 import { type CallOptions, ChannelCredentials, Client, type ClientOptions, type ClientUnaryCall, type handleUnaryCall, Metadata, type ServiceError, type UntypedServiceImplementation } from "@grpc/grpc-js";
-import { CreateUserRequest, GetUserDetailsRequest, UpdateUserRequest } from "../request/user-service-request";
-import { CreateUserResponse, GetUserDetailsResponse, UpdateUserResponse } from "../response/user-service-response";
+import { CreateUserRequest, GetUserDetailsRequest, UpdateUserRequest } from "./request";
+import { CreateUserResponse, GetUserDetailsResponse, UpdateUserResponse } from "./response";
 export declare const protobufPackage = "UserService";
 /** User service definition */
 export type UserServiceService = typeof UserServiceService;

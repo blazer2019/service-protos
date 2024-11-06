@@ -2,14 +2,14 @@
 // versions:
 //   protoc-gen-ts_proto  v1.181.2
 //   protoc               v5.28.2
-// source: response/user-service-response.proto
+// source: user-service/response.proto
 
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { Status } from "../common";
 
-export const protobufPackage = "UserServiceResponse";
+export const protobufPackage = "UserService";
 
 /** User response message containing user details */
 export interface UserResponse {

@@ -2,13 +2,13 @@
 // versions:
 //   protoc-gen-ts_proto  v1.181.2
 //   protoc               v5.28.2
-// source: request/user-service-request.proto
+// source: user-service/request.proto
 
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 
-export const protobufPackage = "UserServiceRequest";
+export const protobufPackage = "UserService";
 
 /** User-specific request and response data */
 export interface CreateUserRequest {
